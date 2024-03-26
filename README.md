@@ -11,3 +11,5 @@ The primary focus of ShowsMe is to provide an accessible and user-friendly platf
 * Gonçalo Costa, up202108814@up.pt
 * João Figueiredo, up202108873@up.pt
 * Rodrigo Moucho, up202108855@up.pt
+
+[Presentation Video](https://git.fe.up.pt./lbaw/lbaw2324/lbaw23105/-/blob/main/images/lbaw23105.mp4)
