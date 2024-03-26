@@ -1,0 +1,687 @@
+.ticket-types {
+    margin-top: 3em;
+    text-align: center;
+}
+
+.ticket-types h2 {
+    font-size: 3em;
+}
+
+h2 span {
+    color: rgb(192, 148, 198);
+}
+
+
+.event-button {
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 15px;
+    margin-left: 1em;
+    color: #fff;
+    transition: transform 0.3s ease;
+}
+
+#deactivate-button {
+    position: relative;
+    background: linear-gradient(to bottom, #bb0e08, #ee3c1c);
+    width: fit-content;
+    justify-self: end;
+}
+
+#activate-button {
+    position: relative;
+    background: linear-gradient(to bottom, #12bd2e, #56f736);
+    width: fit-content;
+    justify-self: end;
+}
+
+.event-button i {
+    margin-right: 5px;
+}
+
+
+.event-button:hover {
+    transform: scale(0.95);
+}
+
+
+input[type="number"] {
+    width: 60px;
+    padding: 8px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+    text-align: center;
+    margin: 5px;
+}
+
+input[type="number"]:hover,
+input[type="number"]:focus {
+    border-color: #36aaf7;
+    outline: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"]:invalid {
+    border-color: #FF0000;
+}
+
+.centered-section {
+
+    align-items: center;
+    padding: 1rem 11em;
+}
+
+.star-icon {
+    color: #ffc700;
+    margin: auto 0;
+}
+
+.comment {
+    margin: 2em;
+    border: 1px solid var(--bs-secondary-color) !important;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.comment::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    border-radius: inherit;
+    z-index: -1;
+}
+
+.comment p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.comment p.comment-author {
+    font-style: italic;
+    font-weight: bold;
+    font-size: 18px;
+    color: #593196;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.comment p.comment-text {
+
+    margin-left: 1em;
+    font-size: 16px;
+}
+
+.comment:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+}
+
+.comment-icons-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comment-icons-container div {
+    display: flex;
+    gap: 10px;
+}
+
+.fa-flag:hover,
+.fa-pen-to-square:hover,
+.fa-trash-can:hover,
+.fa-thumbs-up:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.fa-thumbs-up {
+    margin-right: 5px;
+    padding-left: 5px;
+    color: #593196;
+}
+
+.comment-likes {
+    color: #593196;
+
+}
+
+.comment-likes-section {
+    display: flex;
+    align-items: center;
+
+    width: fit-content;
+    min-width: 45px;
+
+}
+
+.pop-up-report {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.report-section {
+    justify-content: center;
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 30px 60px;
+    width: fit-content;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.report-textbox,
+.new-comment-textbox,
+#editedCommentText {
+    width: 100%;
+    resize: none;
+}
+
+
+#submit-comment-button {
+    display: block;
+    margin: 0 auto;
+}
+
+.event-info-content {
+    display: grid;
+    grid-template-areas:
+        'faturacao'
+        'title-stats'
+        'stats'
+        'title'
+        'hist';
+    padding-bottom: 70px;
+}
+
+.event-info-content .faturacao {
+    display: grid;
+    grid-template-areas:
+        'Tickets revenue'
+        'total_tickets val_revenue';
+    grid-area: faturacao;
+    justify-self: end;
+    padding: 20px;
+    margin-right: 40px;
+    background-color: #6b23df;
+    color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 8px 12px #25015e;
+    width: 300px;
+    grid-template-columns: min-content auto;
+}
+
+.event-info-content .faturacao:hover {
+    box-shadow: 0px 9px 13px #000000;
+}
+
+
+.event-info-content .faturacao #total_tickets {
+    grid-area: total_tickets;
+    font-weight: bold;
+    font-size: 25px;
+    justify-self: center;
+    align-self: center;
+    margin: 0;
+}
+
+.event-info-content .faturacao #val_revenue {
+    grid-area: val_revenue;
+    font-weight: bold;
+    font-size: 25px;
+    justify-self: center;
+    align-self: center;
+    margin: 0;
+}
+
+.event-info-content .faturacao #revenue {
+    grid-area: revenue;
+    font-size: 15px;
+    font-weight: normal;
+    justify-self: center;
+}
+
+.event-info-content .faturacao #tickets {
+    grid-area: Tickets;
+    font-size: 15px;
+    font-weight: normal;
+    justify-self: start;
+}
+
+.event-info-content #hist {
+    display: flex;
+    grid-area: title;
+    justify-self: center;
+    color: #593196;
+    font-weight: bold;
+    font-size: 2.2em;
+}
+
+.event-info-content .hist-compras {
+    display: inline-table;
+    grid-area: hist;
+    color: #ffffff;
+    border-radius: 10px;
+    background-color: #6b23df;
+    box-shadow: 0 6px 10px #806da3;
+    height: min-content;
+    margin: 80px;
+}
+
+.event-info-content .hist-compras tbody {
+    background-color: #a991d4;
+}
+
+.event-info-content .hist-compras tbody,
+td,
+tfoot,
+th,
+thead,
+tr {
+    padding: 10px;
+}
+
+.event-info-content .hist-compras tbody tr {
+    border-bottom: 1px solid #ffffff;
+}
+
+.event-info-content .hist-compras tbody tr:hover {
+    cursor: pointer;
+    background-color: #8c78b2;
+}
+
+.event-info-content .hist-compras tbody tr.row-open,
+.event-info-content .hist-compras tbody tr.row-open:hover {
+    background-color: #7b61ac;
+}
+
+
+.event-info-content .hist-compras tbody td:last-child {
+    width: 20%;
+}
+
+.event-info-content .hist-compras tbody tr td {
+    vertical-align: baseline;
+}
+
+.event-info-content #event-charts {
+    display: grid;
+    grid-area: stats;
+    grid-template-areas:
+        'div_all_tickets_chart div_myPieChart'
+        'div_dif_tickets_chart div_myPieChart'
+        'perc_sold_tickets_charts perc_sold_tickets_charts'
+    ;
+    grid-template-columns: 65% 35%;
+    grid-template-rows: 250px 250px auto;
+    row-gap: 50px;
+    margin: 40px;
+}
+
+.event-info-content #event-charts .div_all_tickets_chart {
+    grid-area: div_all_tickets_chart;
+    display: flex;
+    justify-content: center;
+}
+
+.event-info-content #event-charts .div_dif_tickets_chart {
+    grid-area: div_dif_tickets_chart;
+    display: flex;
+    justify-content: center;
+}
+
+.event-info-content #event-charts .div_myPieChart {
+    grid-area: div_myPieChart;
+}
+
+.event-info-content #event-charts .div_myPieChart canvas {
+    width: 250px;
+    height: 250px;
+}
+
+.event-info-content #event-charts .perc_sold_tickets_charts {
+    display: grid;
+    grid-area: perc_sold_tickets_charts;
+    grid-template-columns: repeat(auto-fill, minmax(0, 300px));
+    grid-auto-rows: minmax(0, 300px);
+    justify-content: center;
+    grid-gap: 10px;
+}
+
+.event-info-content #event-charts .perc_sold_tickets_charts canvas {
+    width: 100%;
+    height: 100%;
+}
+
+.event-info-content #title-charts {
+    display: flex;
+    grid-area: title-stats;
+    justify-self: center;
+    color: #593196;
+    font-weight: bold;
+    font-size: 2.2em;
+}
+
+.warning-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 40vh;
+}
+
+@media (max-width: 1000px) {
+    .warning-section {
+        font-size: 14px;
+        height: 44vh;
+
+    }
+
+    .fa-circle-exclamation {
+        font-size: 2em;
+    }
+}
+
+
+.warning-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 40vh;
+}
+
+@media (max-width: 1000px) {
+    .warning-section {
+        font-size: 14px;
+        height: 44vh;
+
+    }
+
+    .fa-circle-exclamation {
+        font-size: 2em;
+    }
+}
+
+.rate {
+
+    height: 46px;
+    padding: 0 10px;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.rate:not(:checked)>label {
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 30px;
+    color: #ccc;
+}
+
+.rate:not(:checked)>label:before {
+    content: '★ ';
+}
+
+.rate>input:checked~label {
+    color: #ffc700;
+}
+
+.rate:not(:checked)>label:hover,
+.rate:not(:checked)>label:hover~label {
+    color: #deb217;
+}
+
+.rate>input:checked+label:hover,
+.rate>input:checked+label:hover~label,
+.rate>input:checked~label:hover,
+.rate>input:checked~label:hover~label,
+.rate>label:hover~input:checked~label {
+    color: #c59b08;
+}
+
+.centered-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3em;
+}
+
+.no-tickets-stat {
+    margin: 3em;
+}
+
+
+#tab_bar .btn-group {
+    padding: 20px;
+    margin-bottom: 0;
+}
+
+#tab_bar .btn-group>label {
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    padding: 20px;
+    align-self: end;
+}
+
+#tab_bar .btn-check:checked+.btn,
+#tab_bar .btn.active,
+#tab_bar .btn.show,
+#tab_bar .btn:first-child:active,
+#tab_bar :not(.btn-check)+.btn:active {
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(89, 49, 150, 0.8));
+    color: white;
+}
+
+
+.image-container {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 1em;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s ease-in-out;
+}
+
+.image-container i {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: #ffffff;
+    font-weight: bold;
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
+
+.image-container i:hover {
+    transform: scale(1.15); 
+}
+
+.image-container:hover img {
+    filter: brightness(0.5); 
+}
+
+
+.add-image {
+    border: 2px dashed #aaaaaa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.add-image-label {
+    cursor: pointer;
+}
+
+#file-input {
+    display: none;
+}
+
+#edit-event #create-event-form{
+    grid-area: edit;
+}
+
+#edit-event-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+}
+
+#submit-btn {
+    display: none;
+}
+
+#payment-button{
+    display: none;
+}
+
+/*overview*/
+
+#event-name{
+    padding-top: 10px;
+    padding-bottom: 20px;
+    color: white;
+    background-image: linear-gradient(180deg,  rgba(89, 49, 150, 0.9),rgba(255, 255, 255, 1));
+
+    font-weight: 700;
+    width: fit-content;
+    justify-self: center;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+
+#event-overview{
+    display: grid;
+}
+
+
+
+.overview-info {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); 
+    color: white;
+
+    display: grid;
+    grid-template-areas: 
+    'location'
+    'rating'
+    'descri'
+    'Sdate'
+    'Edate'
+    ;
+    grid-template-rows:auto auto 1fr auto auto ;
+    opacity: 1;
+    transition: opacity 0.6s ease;
+    padding: 30px;
+    border-radius: 40px;
+}
+
+.overview-info #description{
+    grid-area: descri;
+    justify-self: center;
+    align-self: center ;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.overview-info .ratings-event{
+    grid-area: rating;
+    justify-self: center;
+    align-self: center ;
+    font-weight: 500;
+    font-size: 25px;
+    padding-top: 20px;
+    padding-bottom: 0;
+}
+
+
+.overview-info #location{
+    grid-area: location;
+    justify-self: end;
+    font-weight: 700;
+    font-size: 25px;
+    margin-right: 30px;
+    margin-top: 30px;
+}
+
+.overview-info #ticket_start_date{
+    grid-area: Sdate;
+    justify-self: end;
+    font-weight: 500;
+    font-size: 15px;
+    margin: 0;
+}
+
+.overview-info #ticket_end_date{
+    grid-area: Edate;
+    justify-self: end;
+    font-weight: 500;
+    font-size: 15px;
+    margin: 0;
+}
+
+.swiper-slide:hover .overview-info {
+    opacity: 0;
+}
+
+
+
+
+#profile-image-comment {
+    display: block;
+    width: 3em;
+    height: 3rem;
+    object-fit: cover;
+    border-radius: 50%;
+    border-style: solid;
+    margin: 0 auto;
+    text-align: center;
+    justify-content: center;
+}

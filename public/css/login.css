@@ -1,0 +1,114 @@
+.auth-section {
+    padding: 2%;
+}
+
+.auth-form {
+    background-color: white;
+    border-radius: 10px;
+    width: 40%;
+    padding: 1.5em 1em;
+    margin: auto;
+    color: rgb(0, 0, 0);
+    box-shadow: 5px 0 40px rgba(0, 0, 0, 0.2); 
+}
+
+
+.auth-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #000000;
+    font-size: larger;
+    font-weight:500;
+}
+
+.auth-form button {
+
+  margin: auto;
+}
+
+
+.auth-form button:hover {
+    transform: scale(0.95); 
+}
+
+.auth-form label.checkbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.auth-form .checkbox input {
+    margin-right: 5px;
+}
+
+
+.auth-message {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 10px;
+    color: #000000; 
+}
+
+.auth-link {
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.auth-link:hover {
+    text-decoration: underline;
+}
+
+.my-input-group {
+    margin-bottom: 15px;
+}
+
+.icon-input {
+    position: relative;
+    border-radius: 4px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #ccc;
+}
+
+.icon-input i {
+    color: #3a3a3a;
+    margin-right: 10px;
+}
+
+.icon-input input {
+    border: none;
+    outline: none;
+    flex: 1;
+    padding-left: 10px;
+    font-size: medium;
+}
+
+
+.icon-input input {
+    padding-left: 10px;
+}
+
+.icon-input input::placeholder {
+    color: #3a3a3a;
+}
+
+@media (max-width: 991px ) {
+    .icon-input {
+        display: flex;
+        text-align: left;
+    }
+
+    .icon-input i {
+        margin-bottom: 5px;
+    }
+
+    .my-input-group input {
+        width: 100%;
+    }
+    .auth-form {
+        width: 70vw;
+    }
+}

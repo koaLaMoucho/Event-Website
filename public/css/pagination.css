@@ -1,0 +1,24 @@
+#paginator {
+  display: grid;
+  grid-area: pagination;
+  gap: 20px;
+  justify-content: center;
+  
+  grid-template-areas:
+  'prev numbers next';
+}
+
+#paginator .prev{
+  grid-area: prev;
+  display: grid;
+}
+
+#paginator .numbers{
+  grid-area: numbers;
+  display: grid;
+}
+
+#paginator .next{
+  grid-area: next;
+  display: grid;
+}

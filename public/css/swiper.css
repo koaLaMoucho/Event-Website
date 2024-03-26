@@ -1,0 +1,120 @@
+#swiper-slide{
+    display: grid;
+    margin: 0 1rem;
+}
+.swiper-slide img {
+    display: block;
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.2);
+    transition: all .3s ease-in-out;
+}
+
+.swiper-slide figure{ 
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+}
+
+
+.swiper-slide-active figcaption{
+    opacity: 100%;
+}
+
+.swiper-slide-active img{
+    filter: brightness(1);
+}
+
+.swiper-custom-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    z-index: 10;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.swiper-custom-nav i {
+    font-size: 2.5em;
+    color: white;
+    cursor: pointer;
+    opacity: .6;
+    transition: all .3s ease-in-out;
+}
+
+.swiper-custom-nav i:hover {
+    opacity: 1;
+}
+
+
+.swiper-custom-pagination {
+    display: flex;
+    width: 100%;
+    padding-top: 2rem;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 17px;
+    line-height: 29px;
+    font-weight: 500;
+    color: black;
+}
+
+.swiper-custom-pagination .swiper-pagination-bullet {
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    background-color: transparent;
+    opacity: 1;
+    text-align: center;
+}
+
+.swiper-custom-pagination .number {
+    opacity: 0;
+    transition: all .3s ease-in-out;
+}
+
+.swiper-custom-pagination .line {
+    opacity: .3;
+    height: .25rem;
+    width: .75rem;
+    background-color: black;
+    display: block;
+    border-radius: 4px;
+    transition: all .3s ease-in-out;
+}
+
+
+.swiper-custom-pagination .swiper-pagination-bullet-active .number,
+.swiper-custom-pagination .swiper-pagination-bullet-active .line {
+    opacity: 1;
+}
+
+.swiper-custom-pagination .swiper-pagination-bullet-active .line {
+    width: 2rem;
+}
+
+
+
+#event-slider {
+    max-height: 60vh;
+    overflow: hidden; 
+    position: relative;
+  }
+  
+  #event-swiper {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .swiper-slide {
+    width: 100%;
+    height: 100%;
+  }
+  
+
+  

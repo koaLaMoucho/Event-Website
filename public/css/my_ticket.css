@@ -1,0 +1,218 @@
+.my-tickets-container {
+    display: grid;
+    grid-template-areas: 
+    'evento bilhetes'
+    '. btn';
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr auto;
+    padding: 30px;
+}
+
+.my-tickets-event{
+    grid-area: evento;
+    display: grid;
+    border: 2px solid rgb(233, 233, 233);
+    border-radius: 10px;
+    width: 290px;
+    height: 340px;
+    color: white;
+    position: relative;
+}
+
+.my-tickets-event .event-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.5);
+    border-radius: 10px;
+}
+
+.my-tickets-event .event-info {
+    display: grid;
+    grid-template-areas: 
+    'my-tickets-event-title'
+    'my-tickets-event-local'
+    'my-tickets-event-Sdate'
+    ;
+
+    grid-template-rows:1fr auto auto;
+
+    position: relative;
+    z-index: 1;
+    justify-content: flex-end;
+    height: 100%;
+    padding: 20px;
+    color: white;
+    text-decoration: none;
+}
+
+
+
+.my-tickets-per-event{
+    display: grid;
+    grid-area: bilhetes;
+    grid-template-columns: repeat(auto-fill, minmax(0, 530px)); 
+    row-gap: 15px;
+    max-height: 340px;
+    overflow: scroll;
+    border-radius: 40px;
+    justify-content: center;
+}
+
+.my-tickets-btn{
+    display: none;
+    grid-area: btn;
+    justify-self: center;
+    align-self: flex-end;
+    border:none;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
+    margin: 0.5%;
+    border-radius: 10px;
+    color: #25015e;
+    background-color: transparent;
+}
+
+.my-tickets-btn:hover{
+    color: #a991d4;
+}
+
+
+.my-tickets-event #my-tickets-event-title{
+    grid-area: my-tickets-event-title;
+    font-size: 18px;
+    justify-self: center;
+    align-self: start;
+    z-index: 1;
+    font-weight: 600;
+}
+
+.my-tickets-event #my-tickets-event-local{
+    grid-area: my-tickets-event-local;
+    font-size: 16px;
+    justify-self: start;
+    align-self: center;
+    z-index: 1;
+    margin:0;
+    font-weight: 500;
+}
+
+.my-tickets-event #my-tickets-event-Sdate{
+    grid-area: my-tickets-event-Sdate;
+    font-size: 16px;
+    justify-self: end;
+    align-self: center;
+    z-index: 1;
+    margin:0;
+    font-weight: 600;
+}
+
+
+.ticket-instance {
+    display: grid;
+    grid-template-areas: 'info_area line qr_area';
+    width: fit-content;
+    column-gap: 1px;
+    padding: 20px;
+    border-radius: 20px;
+    min-height: 275px;
+    height: min-content;
+}
+
+.ticket-instance .line {
+    grid-area: line;
+    content: "";
+    height: 96%;
+    width: 5px; 
+    display: flex;
+    align-self: center;
+    border-left: 6px dashed #000000; 
+}
+
+
+.ticket-instance .qr_area {
+    display: flex;
+    grid-area: qr_area;
+    border: 2px solid rgb(233, 233, 233);
+    box-shadow: 0 8px 12px #25015e;
+    background-color: #ddd;
+    width: 150px;
+    padding: 20px;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+    border-top-right-radius: 15px; 
+    border-bottom-right-radius: 15px;
+}
+
+.ticket-instance .info_area {
+    display: grid;
+    grid-template-areas: 
+    'tipo tipo num'
+    'descri descri descri'
+    'logo hora hora';
+    grid-template-rows: auto 1fr auto ;
+    grid-area: info_area;
+    border: 2px solid rgb(233, 233, 233);
+    box-shadow: 0 8px 12px #25015e;
+    background-color: #ddd;
+    width: 350px;
+    padding: 20px;
+    margin: 0;
+    border-top-left-radius: 15px; 
+    border-bottom-left-radius: 15px;
+}
+
+.ticket-instance .info_area #tipo{
+    grid-area: tipo;
+    justify-self: start;
+    font-size: 30px;
+    font-weight: 800;
+    color: purple;
+    margin-bottom: 5px;
+}
+.ticket-instance .info_area #descri{
+    grid-area: descri;
+    justify-self: start;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.5); 
+    font-weight: 600;
+}
+.ticket-instance .info_area #hora{
+    grid-area: hora;
+    justify-self: end;
+    margin:0;
+    align-self: center;
+    color: rgba(0, 0, 0, 0.5); 
+    font-weight: 600;
+}
+.ticket-instance .info_area #num{
+    grid-area: num;
+    justify-self: end;
+    margin:0;
+    align-self: start;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 15px;
+}
+
+#ticket-logo {
+    grid-area: logo;
+    justify-self: center;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.5); 
+    font-size: 2.4em;
+    font-weight: bold;
+    width: fit-content;
+    margin: 0;
+    cursor: default;
+}
+
+#ticket-logo > span {
+    color: rgba(192, 148, 198, 0.5); 
+}
+
+

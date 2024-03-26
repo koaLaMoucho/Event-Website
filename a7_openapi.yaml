@@ -1,0 +1,581 @@
+openapi: 3.0.0
+
+info:
+  version: '1.0'
+  title: 'ShowsMe Web API'
+  description: 'Web Resources Specification for ShowsMe'
+
+servers:
+  - url: http://lbaw23105.fe.up.pt
+    description: Production server
+
+externalDocs:
+  description: Find more info here.
+  url: https://git.fe.up.pt./lbaw/lbaw2324/lbaw23105/-/wikis/eap
+
+tags:
+  - name: 'M01: User Authentication and Profiles'
+  - name: 'M02: Event Discovery'
+  - name: 'M03: Ticket Purchase and Management'
+  - name: 'M04: Event Creation and Management'
+  - name: 'M05: Site Administration and Static Pages'
+
+paths:
+  /login:
+    get:
+      operationId: R101
+      summary: 'R101: Login Form'
+      description: 'Provide login form. Access: VST'
+      tags:
+        - 'M01: User Authentication and Profiles'
+      responses:
+        '200':
+          description: 'Ok. Show Log-in UI'
+    post:
+      operationId: R102
+      summary: 'R102: Login Action'
+      description: 'Processes the login form submission. Access: VST'
+      tags:
+        - 'M01: User Authentication and Profiles'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                  format: password
+              required:
+                - email
+                - password
+      responses:
+        '302':
+          description: 'Redirect after processing the login credentials.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful authentication. Redirect to home page'
+                  value: '/all_events'
+                302Failure:
+                  description: 'Failed authentication. Redirect to login form.'
+                  value: '/login'
+
+  /logout:
+    post:
+      operationId: R103
+      summary: 'R103: Logout Action'
+      description: 'Logout the current authenticated user. Access: USR, ADM'
+      tags:
+        - 'M01: User Authentication and Profiles'
+      responses:
+        '302':
+          description: 'Redirect after processing logout.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful logout. Redirect to login form.'
+                  value: '/login'
+                
+
+
+  /register:
+    get:
+      operationId: R104
+      summary: 'R104: Register Form'
+      description: 'Provide new user registration form. Access: VST'
+      tags:
+        - 'M01: User Authentication and Profiles'
+      responses:
+        '200':
+          description: 'Ok. Show Sign-Up UI'
+    post:
+      operationId: R105
+      summary: 'R105: Register Action'
+      description: 'Processes the new user registration form submission. Access: VST'
+      tags:
+        - 'M01: User Authentication and Profiles'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                  format: email
+                phone_number:
+                  type: string
+                password:
+                  type: string
+                  format: password
+                confirm_password:
+                  type: string
+                  format: password
+              required:
+                - name
+                - email
+                - phone_number
+                - password
+                - confirm_password
+      responses:
+        '302':
+          description: 'Redirect after processing the new user information.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful authentication. Redirect to home screen.'
+                  value: '/all_events'
+                302Failure:
+                  description: 'Failed authentication. Redirect to register form.'
+                  value: '/register'
+
+  /profile:
+    get:
+      operationId: R106
+      summary: 'R106: View authenticated user profile'
+      description: 'Show the individual user profile. Access: USR, ADM'
+      tags:
+        - 'M01: User Authentication and Profiles'
+      responses:
+        '200':
+          description: 'Ok. Show User Profile UI'
+    post:
+      operationId: R107
+      summary: 'R107: Update User Profile'
+      description: 'Update user information. Access: OWN'
+      tags:
+        - 'M01: User Authentication and Profiles'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                  format: email
+                phone_number:
+                  type: string
+                promocode:
+                  type: string
+              required:
+                - name
+                - email
+                - phone_number
+      responses:
+        '302':
+          description: 'Redirect after processing the user profile update.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful update. Redirect to user profile.'
+                  value: '/profile'
+                302Failure:
+                  description: 'Failed update. Redirect to user profile.'
+                  value: '/profile'
+
+  /all-events:
+    get:
+      operationId: R201
+      summary: 'R201: List All Events'
+      description: 'Retrieve a list of all events. Access: VST,USR,OWN,ADM'
+      tags:
+        - 'M02: Event Discovery'
+      responses:
+        '200':
+          description: 'Ok. Show List of All Events UI'
+
+  /view-event/{event_id}:
+    get:
+      operationId: R202
+      summary: 'R202: View Event Details'
+      description: 'Show details of a specific event. Access: VST,USR,OWN,ADM'
+      tags:
+        - 'M02: Event Discovery'
+      parameters:
+        - in: path
+          name: event_id
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: 'Ok. Show Event Details UI'
+  /search-events:
+    get:
+      operationId: R203
+      summary: 'R203: Full Text Search'
+      description: 'Perform a full-text search on events based on name, description, tags, and location. Access: VST,USR,OWN,ADM'
+      tags:
+        - 'M02: Event Discovery'
+      parameters:
+        - in: query
+          name: query
+          schema:
+            type: string
+          required: true
+          description: 'The search query'
+      responses:
+        '200':
+          description: 'Ok. Show Search Results UI'
+
+
+  /purchase-tickets/{event_id}:
+    post:
+      operationId: R301
+      summary: 'R301: Purchase Tickets for Event'
+      description: 'Purchase tickets for the specific event. Access: USR, ADM'
+      tags:
+        - 'M03: Ticket Purchase and Management'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                ticket_type:
+                  type: string
+                  description: 'Type of ticket to purchase'
+                quantity:
+                  type: integer
+                  description: 'Number of tickets to purchase'
+              required:
+                - ticket_type
+                - quantity
+      responses:
+  '302':
+    description: 'Redirect after processing the ticket purchase.'
+    headers:
+      Location:
+        schema:
+          type: string
+        examples:
+          302Failure:
+            description: 'Failed ticket purchase. Redirect back.'
+          302Success:
+            description: 'Successful ticket purchase. Redirect back.'
+               
+
+
+  /edit-event/{event_id}:
+    post:
+      operationId: R401
+      summary: 'R401: Edit Details of Created Event'
+      description: 'Edit details of a created event. Access: OWN'
+      tags:
+        - 'M04: Event Creation and Management'
+      parameters:
+        - in: path
+          name: event_id
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                event_name:
+                  type: string
+                  description: 'Updated name of the event'
+                location:
+                  type: string
+                  description: 'Updated location of the event'
+                start_timestamp:
+                  type: string
+                  format: date-time
+                  description: 'Updated start timestamp of the event'
+                end_timestamp:
+                  type: string
+                  format: date-time
+                  description: 'Updated end timestamp of the event'
+              required:
+                - event_name
+                - location
+                - start_timestamp
+                - end_timestamp
+      responses:
+        '200':
+          description: 'OK. Event Edited with success'
+        '302':
+          description: 'Redirect if event edit'
+          headers:
+            Location:
+              schema:
+                type: string
+              example:
+                302Success:
+                  description: 'Event Edited with success. Redirect back.'
+                302Failure:
+                  description: 'Failure editing event. Redirect back.'
+
+
+
+
+  /create-tickets/{event_id}:
+    post:
+      operationId: R402
+      summary: 'R402: Create Tickets for Sale'
+      description: 'Create tickets for sale for an event. Access: OWN'
+      tags:
+        - 'M04: Event Creation and Management'
+      parameters:
+        - in: path
+          name: event_id
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                ticket_name:
+                  type: string
+                  description: 'Name of the ticket'
+                stock:
+                  type: integer
+                  description: 'Number of tickets available for sale'
+                person_buying_limit:
+                  type: integer
+                  description: 'Limit on the number of tickets a person can buy'
+                price:
+                  type: number
+                  description: 'Price of the ticket'
+                start_timestamp:
+                  type: string
+                  format: date-time
+                  description: 'Start timestamp for ticket availability'
+                end_timestamp:
+                  type: string
+                  format: date-time
+                  description: 'End timestamp for ticket availability'
+              required:
+                - ticket_name
+                - stock
+                - person_buying_limit
+                - price
+                - start_timestamp
+                - end_timestamp
+      responses:
+        '200':
+          description: 'Ok. Show Tickets Created UI'
+        '302':
+          description: 'Redirect after creating ticket.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful ticket created. Redirect back.'
+                302Failure:
+                  description: 'Ticket created failed. Redirect back.'
+
+  /update-ticket-stock/{event_id}:
+    post:
+      operationId: R403
+      summary: 'R403: Update Ticket Stock'
+      description: 'Update the stock of a ticket type for an event. Access: OWN'
+      tags:
+        - 'M04: Event Creation and Management'
+      parameters:
+        - in: path
+          name: event_id
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                ticket_type_id:
+                  type: integer
+                  description: 'ID of the ticket type to update'
+                new_stock:
+                  type: integer
+                  description: 'New stock value for the ticket type'
+              required:
+                - ticket_type_id
+                - new_stock
+      responses:
+        '200':
+          description: 'Ok. Show Ticket Stock Updated UI'
+        '302':
+          description: 'Redirect after updating stock.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful stock updated. Redirect back.'
+                302Failure:
+                  description: 'Ticket created failed. Redirect back.'
+
+  /deactivate-event/{event_id}:
+    post:
+      operationId: R501
+      summary: 'R501: Deactivate or Activate Event'
+      description: 'Deactivate an event. Access: ADM'
+      tags:
+        - 'M05: Site Administration and Static Pages'
+      parameters:
+        - in: path
+          name: event_id
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: 'Ok. Show Event UI'
+        '302':
+          description: 'Redirect after Activating/Deactivating Event.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful event activated/deactivated. Redirect back.'
+                302Failure:
+                  description: 'Event activated/deactivated failed. Redirect back.'
+
+  /my-events:
+    get:
+      operationId: R302
+      summary: 'R302: View Purchased Tickets'
+      description: 'View a list of purchased tickets by authenticated user. Access: OWN'
+      tags:
+        - 'M03: Ticket Purchase and Management'
+      responses:
+        '200':
+          description: 'Ok. Show List of Purchased Tickets UI'
+  /create-event-page:
+    post:
+      operationId: R404
+      summary: 'R404: Create an Event'
+      description: 'Create a new event. Access: USR'
+      tags:
+        - 'M04: Event Creation and Management'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                event_name:
+                  type: string
+                  description: 'Name of the event'
+                location:
+                  type: string
+                  description: 'Location of the event'
+                start_timestamp:
+                  type: string
+                  format: date-time
+                  description: 'Start timestamp of the event'
+                end_timestamp:
+                  type: string
+                  format: date-time
+                  description: 'End timestamp of the event'
+              required:
+                - event_name
+                - location
+                - start_timestamp
+                - end_timestamp
+      responses:
+        '302':
+          description: 'Redirect after processing the event creation.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Event created successfully. Redirect to My Events.'
+                  value: '/my-events'
+                302Failure:
+                  description: 'Failed to create the event. Redirect to create-event-page.'
+                  value: '/create-event-page'
+  /admin:
+    post:
+      operationId: R502
+      summary: 'R502: Deactivate or Activate Users'
+      description: 'Deactivate or activate user accounts. Access: ADM'
+      tags:
+        - 'M05: Site Administration and Static Pages'
+      parameters:
+        - in: query
+          name: user_id
+          schema:
+            type: integer
+          description: 'ID of the user to deactivate or activate'
+      responses:
+        '200':
+          description: 'Ok. Show Users Deactivated or Activated UI'
+        '302':
+          description: 'Redirect after Activating/Deactivating User.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful user activated/deactivated. Redirect back.'
+                302Failure:
+                  description: 'User activated/deactivated failed. Redirect back.'
+        
+
+  /about-us:
+    get:
+      operationId: R503
+      summary: 'R503: About Us'
+      description: 'View information about the platform. Access: VST,USR,OWN,ADM'
+      tags:
+        - 'M05: Site Administration and Static Pages'
+      responses:
+        '200':
+          description: 'Ok. Show About Us UI'
+
+  /faq:
+    get:
+      operationId: R504
+      summary: 'R504: FAQ'
+      description: 'View frequently asked questions. Access: VST,USR,OWN,ADM'
+      tags:
+        - 'M05: Site Administration and Static Pages'
+      responses:
+        '200':
+          description: 'Ok. Show FAQ UI'

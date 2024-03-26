@@ -1,0 +1,145 @@
+.warning-section {
+    padding: 60px;
+    width: 30%;
+    background-color: #ddd;
+    border-radius: 12px;
+    margin: 0 auto;
+    margin-top: 10%; 
+    text-align: center;
+}
+
+.warning-section p {
+    margin-bottom: 15px;
+    font-size: 1.2em; 
+}
+
+.warning-section i {
+    font-size: 4em; 
+    color: #000000; 
+    padding: 30px;
+}
+
+#create-event-content{
+    display: grid;
+    grid-template-areas: 
+    'title'
+    'bar'
+    'form';
+    margin: 50px;
+}
+
+#create-event-content h2{
+    grid-area: title;
+    justify-self: center;
+    font-size: 3em;
+    margin-bottom: 50px;
+}
+
+
+#create-event-form {
+    grid-area: form;
+    border-radius: 10px;
+    border: 2px solid rgb(233, 233, 233);
+
+    max-width: 800px;
+    width: 700px;
+    justify-self: center;
+    padding: 20px;
+    margin-top: 50px;
+    
+    display: grid;
+    grid-template-areas: 
+    'name location'
+    'descri descri'
+    'sdate edate'
+    'botao botao';
+    grid-template-rows: auto 1fr auto auto auto;
+    row-gap: 30px;
+    column-gap: 30px;
+    background-color: #ddd;
+}
+
+
+#create-event-form #create_name{
+    padding: 0;
+    grid-area: name;
+}
+ #create-event-form #create_name input{
+    background-color: transparent;
+    font-size: 30px;
+    font-weight: 800;
+    color: purple;
+    margin-bottom: 5px;
+    border-radius: 10px;
+}
+ #create-event-form #create_name input::placeholder{
+    color: rgba(128, 0, 128, 0.459);
+}
+
+#create-event-form #create_descr{
+    padding: 0;
+    grid-area: descri;
+}
+ #create-event-form #create_descr textarea{
+    background-color: transparent;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: 600;
+    background-color: transparent;
+    resize: none;
+    border-radius: 10px;
+
+}
+
+
+#create-event-form #create_local{
+    padding: 0;
+    grid-area: location;
+    justify-content: end;
+}
+ #create-event-form #create_local input{
+    background-color: transparent;
+    font-size: 30px;
+    font-weight: 600;
+    border-radius: 10px;
+
+}
+
+ #create-event-form #create_local input::placeholder{
+    color: #80008045;
+}
+
+ #create-event-form #create_sdate{
+    padding: 0;
+    grid-area: sdate;
+}
+ #create-event-form #create_sdate input{
+    cursor: pointer;
+    background-color: #ffffffa9;
+    border-radius: 5px;
+    padding: 5px;
+    border-radius: 10px;
+
+}
+
+ #create-event-form #create_edate{
+    padding: 0;
+    grid-area: edate;
+}
+ #create-event-form #create_edate input{
+    cursor: pointer;
+    background-color: #ffffffa9;
+    border-radius: 5px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+ #create-event-form button{
+    margin-top: 30px;
+    justify-self: center;
+    grid-area: botao;
+}
+
+ #create-event-form #create_descr textarea{
+    resize: none; 
+}

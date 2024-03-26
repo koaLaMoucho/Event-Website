@@ -1,0 +1,39 @@
+#payment {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#payment h2 {
+    margin-top: 2em;
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+#payment article {
+    padding: 20px;
+    background-color: var(--gray);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+#payment label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+#payment input[type="text"],
+#payment textarea,
+#payment input[type="datetime-local"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#payment textarea {
+    height: 100px;
+    resize: vertical;
+}
